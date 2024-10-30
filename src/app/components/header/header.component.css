@@ -1,0 +1,20 @@
+header{
+    width: 100%;
+    padding: 20px 0;
+    background: rgb(0, 115, 255);
+}
+
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header__logo_size{
+    max-width: 120px;
+}
+
+.header__logo{
+    display: flex;
+    justify-content: center;
+}
