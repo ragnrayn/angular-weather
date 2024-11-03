@@ -1,0 +1,15 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home__main{
+    padding: 15px;
+    border: 2px solid silver;
+    border-radius: 15px;
+    max-width: 335px;
+}
+
+.home__body{
+    margin-top: 30px;
+}
