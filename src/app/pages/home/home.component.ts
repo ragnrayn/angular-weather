@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   weatherData: any = {};
-  searchText: string = "";
 
   constructor(private weatherService: WeatherService){}
   
