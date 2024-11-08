@@ -13,3 +13,52 @@
 .home__body{
     margin-top: 30px;
 }
+
+.home__weather__title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.weather__block{
+    margin-bottom: 10px;
+}
+
+.weather__block{
+    font-weight: bold;
+}
+.weather__block span{
+    font-weight: normal;
+}
+
+.weather__block_centered{
+    display: flex;
+    align-items: center;
+}
+
+.weather__search{
+    margin: 50px 0;
+}
+
+.weather__search__input input{
+    padding: 15px 0 15px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.weather__search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.weather__search__input{
+    flex: 1 1 auto;
+}
+
+.weather__search__button button{
+    min-height: 49px;
+    padding: 0 10px;
+}

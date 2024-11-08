@@ -12,10 +12,15 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class HomeComponent implements OnInit {
 
+  weatherData: any = {};
+
   constructor(private weatherService: WeatherService){}
   
   ngOnInit(): void {  
-    this.weatherService.getCurrentWeather().subscribe(data => console.log("Current Weather: ", data));
+    this.weatherService.getCurrentWeather().subscribe(data => {
+      console.log("Weather data", data);
+      this.weatherData = data;
+    });
   }
 
 }
