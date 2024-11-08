@@ -5,10 +5,7 @@
         <div class="home__body">
             <div class="weather__search">
                 <div class="weather__search__input">
-                    <input type="text" placeholder="Enter you location name">
-                </div>
-                <div class="weather__search__button">
-                    <button>Get Current Weather</button>
+                    <input type="text" placeholder="Enter you country" (change)="searchCountry($event)">
                 </div>
             </div>
             <div class="home__main">
