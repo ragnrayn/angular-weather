@@ -8,7 +8,7 @@ interface ICurrentWeather{}
   providedIn: 'root'
 })
 export class WeatherService {
-
+  
   constructor(private http: HttpClient){}
 
   getCurrentWeather(text: string): Observable<Object>{
@@ -17,6 +17,10 @@ export class WeatherService {
 
   searchWeather(searchTitle: string): Observable<any> {
     return this.http.get<any>(`https://api.weatherapi.com/v1/search.json?key=f80570555e5344e5bb0191912240311&q=${searchTitle}`);
+  }
+
+  forecastWeather(): Observable<any>{
+    return this.http.get<any>(`https://api.weatherapi.com/v1/forecast.json?key=f80570555e5344e5bb0191912240311&q=Kyiv&days=5`)
   }
 
 }
