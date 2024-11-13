@@ -22,11 +22,12 @@
 
 .weather__block{
     margin-bottom: 10px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
 }
 
-.weather__block{
-    font-weight: bold;
-}
 .weather__block span{
     font-weight: normal;
 }
@@ -61,4 +62,27 @@
 .weather__search__button button{
     min-height: 49px;
     padding: 0 10px;
+}
+
+
+.home__row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.home__weather__row{
+    display: flex;
+}
+
+.home__main__full__width{
+    max-width: 100%;
+    align-self: flex-start;
+    margin-bottom: 0;
+}
+
+.weather__block__location{
+    margin-bottom: 15px;
+    font-weight: bold;
 }

@@ -15,12 +15,12 @@ export class WeatherService {
     return this.http.get<Object>(`https://api.weatherapi.com/v1/current.json?key=f80570555e5344e5bb0191912240311&q=${text}`);
   }
 
-  searchWeather(searchTitle: string): Observable<any> {
-    return this.http.get<any>(`https://api.weatherapi.com/v1/search.json?key=f80570555e5344e5bb0191912240311&q=${searchTitle}`);
+  forecastWeather(city: string, days: string): Observable<any>{
+    return this.http.get<any>(`https://api.weatherapi.com/v1/forecast.json?key=f80570555e5344e5bb0191912240311&q=${city}&days=${days}`)
   }
 
-  forecastWeather(): Observable<any>{
-    return this.http.get<any>(`https://api.weatherapi.com/v1/forecast.json?key=f80570555e5344e5bb0191912240311&q=Kyiv&days=5`)
+  searchWeather(searchTitle: string): Observable<any> {
+    return this.http.get<any>(`https://api.weatherapi.com/v1/search.json?key=f80570555e5344e5bb0191912240311&q=${searchTitle}`);
   }
 
 }

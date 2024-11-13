@@ -8,38 +8,64 @@
                     <input type="text" placeholder="Enter you country" (change)="searchCountry($event)">
                 </div>
             </div>
-            <div class="home__main">
-                <div class="home__main__current">
-                    <div class="home__weather">
-                        <div class="home__weather__title">
-                            Current Weather:
-                        </div>
-                        <div class="home__weather__main">
-                            <div class="weather__location">
-                                <div class="weather__block">
-                                    <span>Country</span> - {{ weatherData.location.country }}
+            <div class="home__row">
+                <div class="home__main">
+                    <div class="home__main__block">
+                        <div class="home__weather">
+                            <div class="home__weather__title">
+                                Current Weather:
+                            </div>
+                            <div class="home__weather__main">
+                                <div class="weather__location">
+                                    <div class="weather__block">
+                                        <span>Country</span> - {{ weatherData.location.country }}
+                                    </div>
+                                    <div class="weather__block">
+                                        <span>Kyiv</span> - {{ weatherData.location.name }}
+                                    </div>
+                                    <div class="weather__block">
+                                        <span>Region</span> - {{ weatherData.location.region }}
+                                    </div>
                                 </div>
-                                <div class="weather__block">
-                                    <span>Kyiv</span> - {{ weatherData.location.name }}
-                                </div>
-                                <div class="weather__block">
-                                    <span>Tzid</span> - {{ weatherData.location.region }}
+                                <div class="weather__current">
+                                    <div class="weather__block weather__block_centered">
+                                        <span>Country</span> - {{ weatherData.current.condition.text }} <img [src]="weatherData.current.condition.icon" alt="">
+                                    </div>
+                                    <div class="weather__block">
+                                        <span>Temp C</span> - {{ weatherData.current.temp_c }}
+                                    </div>
+                                    <div class="weather__block">
+                                        <span>Temp F</span> - {{ weatherData.current.temp_f }}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="weather__current">
-                                <div class="weather__block weather__block_centered">
-                                    <span>Country</span> - {{ weatherData.current.condition.text }} <img [src]="weatherData.current.condition.icon" alt="">
-                                </div>
-                                <div class="weather__block">
-                                    <span>Temp C</span> - {{ weatherData.current.temp_c }}
-                                </div>
-                                <div class="weather__block">
-                                    <span>Temp F</span> - {{ weatherData.current.temp_f }}
+                        </div>
+                    </div>
+                </div>
+                <div class="home__main home__main__full__width">
+                    <div class="home__main__block">
+                        <div class="home__weather">
+                            <div class="home__weather__title">
+                                Forecast Weather - {{ weatherData.location.country }}
+                            </div>
+                            <div class="home__weather__row">
+                                <div class="home__weather__main" *ngFor="let forecast of forecastWeather.forecast.forecastday; let i = index">
+                                    <div class="limit__block" *ngIf="i<3">
+                                        <div class="weather__block">
+                                            Day {{ i + 1 }} - {{ forecast.date }}
+                                        </div>
+                                        <div class="weather__block">
+                                            <span>Avarage Temp C</span> - {{  forecast.day.avgtemp_c }}
+                                        </div>
+                                        <div class="weather__block">
+                                            <span>Avarage Temp F</span> - {{ forecast.day.avgtemp_f }}
+                                        </div>
+                                        <div class="weather__block">
+                                            <span>Condition</span> - {{ forecast.day.condition.text }} <img [src]="forecastWeather.forecast.forecastday[0].day.condition.icon" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="home__weather__description">
-                            Description
                         </div>
                     </div>
                 </div>
