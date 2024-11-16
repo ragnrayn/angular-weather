@@ -5,7 +5,10 @@
         <div class="home__body">
             <div class="weather__search">
                 <div class="weather__search__input">
-                    <input type="text" placeholder="Enter you country" (change)="searchCountry($event)">
+                    <input type="text" placeholder="Enter you country" #searchBar [(ngModel)]="searchBarText">
+                </div>
+                <div class="weather__search__button">
+                    <button type="button" (click)="searchCountry(); searchBar.value=''">Search</button>
                 </div>
             </div>
             <div class="home__row">
@@ -17,6 +20,9 @@
                             </div>
                             <div class="home__weather__main">
                                 <div class="weather__location">
+                                    <div class="weather__block">
+                                        <span>Timezone</span> - {{ cityTimezone }}
+                                    </div>
                                     <div class="weather__block">
                                         <span>Country</span> - {{ weatherData.location.country }}
                                     </div>
@@ -46,7 +52,7 @@
                     <div class="home__main__block">
                         <div class="home__weather">
                             <div class="home__weather__title">
-                                Forecast Weather - {{ weatherData.location.country }}
+                                Forecast Weather - {{ weatherData.location.country }} - {{ weatherData.location.name }}
                             </div>
                             <div class="home__weather__row">
                                 <div class="home__weather__main" *ngFor="let forecast of forecastWeather.forecast.forecastday; let i = index">
