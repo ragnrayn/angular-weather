@@ -4,6 +4,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { WeatherService } from '../../services/weather.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -22,41 +23,26 @@ export class HomeComponent implements OnInit {
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-
-    this.weatherService.forecastWeather('London', '5').subscribe((data) => {
-      console.log('Forecast data', data);
-      this.forecastWeather = data;
-    }
-  );
-
-    this.weatherService.getCurrentWeather('London').subscribe((data) => {
-      console.log('Weather data', data);
-      this.weatherData = data;
-    });
-
-    this.weatherService.getTimezone('London').subscribe((data) => {
-      console.log("Timezone", data);
-      this.cityTimezone = data.location.localtime;
+    forkJoin([
+      this.weatherService.forecastWeather("London", "5"),
+      this.weatherService.getCurrentWeather("London"),
+      this.weatherService.getTimezone("London")
+    ]).subscribe(data => {
+      this.forecastWeather = data[0];
+      this.weatherData = data[1];
+      this.cityTimezone = data[2].location.localtime
     })
   }
 
   searchCountry(): void {
-    this.weatherService
-      .getCurrentWeather(this.searchBarText)
-      .subscribe((data) => {
-        console.log('Search data', data);
-        this.weatherData = data;
-      });
-
-    this.weatherService.forecastWeather(this.searchBarText, '5').subscribe((data) => {
-      console.log('Forecast data', data);
-      this.forecastWeather = data;
-    });
-
-
-    this.weatherService.getTimezone(this.searchBarText).subscribe((data) => {
-      console.log("Timezone", data);
-      this.cityTimezone = data.location.localtime;
+    forkJoin([
+      this.weatherService.forecastWeather(this.searchBarText, '5'),
+      this.weatherService.getCurrentWeather(this.searchBarText),
+      this.weatherService.getTimezone(this.searchBarText)
+    ]).subscribe(data => {
+      this.forecastWeather = data[0];
+      this.weatherData = data[1];
+      this.cityTimezone = data[2].location.localtime
     })
   }
 }

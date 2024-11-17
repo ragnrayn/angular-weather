@@ -28,5 +28,9 @@ export class WeatherService {
     return this.http.get(`https://api.weatherapi.com/v1/timezone.json?key=f80570555e5344e5bb0191912240311&q=${city}`);
   }
 
+  // getAstronomy(): Observable<any> {
+  //   return this.http.get();
+  // }
+
 
 }
