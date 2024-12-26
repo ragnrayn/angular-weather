@@ -86,3 +86,19 @@
     margin-bottom: 15px;
     font-weight: bold;
 }
+
+.astronomy__data{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.astronomy__data_item{
+    font-weight: bold;
+}
+
+.astronomy__data_item span{
+    font-weight: normal;
+}

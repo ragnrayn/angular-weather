@@ -5,6 +5,7 @@ import { WeatherService } from '../../services/weather.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { ICurrentWeather } from '../../utils/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,12 @@ import { forkJoin } from 'rxjs';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+
   weatherData: any = {};
   forecastWeather: any = [];
   searchBarText: string = '';
   cityTimezone: string = '';
-  errorHandler: Array<any> = [];
+  astronomyData: any = {};
 
   constructor(private weatherService: WeatherService) {}
 
@@ -26,11 +28,13 @@ export class HomeComponent implements OnInit {
     forkJoin([
       this.weatherService.forecastWeather("London", "5"),
       this.weatherService.getCurrentWeather("London"),
-      this.weatherService.getTimezone("London")
+      this.weatherService.getTimezone("London"),
+      this.weatherService.getAstronomy("London", "2021-06-25")
     ]).subscribe(data => {
       this.forecastWeather = data[0];
       this.weatherData = data[1];
-      this.cityTimezone = data[2].location.localtime
+      this.cityTimezone = data[2].location.localtime;
+      this.astronomyData = data[3].astronomy.astro;
     })
   }
 

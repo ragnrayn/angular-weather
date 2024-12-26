@@ -24,7 +24,7 @@
                                         <span>Timezone</span> - {{ cityTimezone }}
                                     </div>
                                     <div class="weather__block">
-                                        <span>Country</span> - {{ weatherData.location.country }}
+                                        <span>Country</span> - {{ weatherData.location.country ? weatherData.location.country : 'No data' }}
                                     </div>
                                     <div class="weather__block">
                                         <span>Kyiv</span> - {{ weatherData.location.name }}
@@ -52,7 +52,7 @@
                     <div class="home__main__block">
                         <div class="home__weather">
                             <div class="home__weather__title">
-                                Forecast Weather - {{ weatherData.location.country }} - {{ weatherData.location.name }}
+                                Forecast Weather - {{ weatherData.location.country ? weatherData.location.country : "No data" }} - {{ weatherData.location.name ? weatherData.location.name : "No data" }}
                             </div>
                             <div class="home__weather__row">
                                 <div class="home__weather__main" *ngFor="let forecast of forecastWeather.forecast.forecastday; let i = index">
@@ -70,6 +70,25 @@
                                             <span>Condition</span> - {{ forecast.day.condition.text }} <img [src]="forecastWeather.forecast.forecastday[0].day.condition.icon" alt="">
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="astronomy__block">
+                            <div class="astronomy__title">
+                                <b>Astronomy in {{ weatherData.location.country ? weatherData.location.country : "No data" }} - {{ weatherData.location.name }}</b>
+                            </div>
+                            <div class="astronomy__data">
+                                <div class="astronomy__data_item">
+                                    <span>Sunset</span> - {{ astronomyData.sunset }}
+                                </div>
+                                <div class="astronomy__data_item">
+                                    <span>Sunrise</span> - {{ astronomyData.sunrise }}
+                                </div>
+                                <div class="astronomy__data_item">
+                                    <span>Moonset</span> - {{ astronomyData.moonset }}
+                                </div>
+                                <div class="astronomy__data_item">
+                                    <span>Moonrise</span> - {{ astronomyData.moonrise }}
                                 </div>
                             </div>
                         </div>
